@@ -47,16 +47,36 @@ const getPatientById = async (id) => {
     ))[0];
 }; 
 
-const createPatient = (patient) => {
+const createPatient = async (patient) => {
+    const sql = `
+    insert into patient (name, last_name, identification, email)
+    values ($1, $2, $3, $4)
+    `;
     
+    await pool.query(sql, [patient.name, patient.lastname, patient.identification, patient.email]);
 };
 
-const updatePatient = (patient) => {
+const updatePatient = async (patient) => {
+    const sql = `
+    update patient
+    set
+        name = $1, 
+        last_name = $2, 
+        identification = $3, 
+        email = $4
+    where id = $5
+    `;
     
+    await pool.query(sql, [patient.name, patient.lastname, patient.identification, patient.email, patient.id]);
 };
 
-const deletePatient = (id) => {
+const deletePatient = async (id) => {
+    const sql = `
+    delete from patient
+    where id = $1
+    `;
     
+    await pool.query(sql, [id]);
 };
 
 module.exports = {
