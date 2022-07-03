@@ -5,7 +5,7 @@
         "node": "16.x"
     },
     "scripts": {
-        "postinstall": "npm install --production=true --prefix backend && npm install --production=true --prefix frontend",
+        "postinstall": "npm ci --prefix backend && npm ci --prefix frontend",
         "build": "npm run build --prefix frontend"
     }
 }
