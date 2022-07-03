@@ -5,7 +5,7 @@ const path = require('path')
 const patientController = require('./controller/patientController');
 
 const app = express();
-const port = 4320;
+const port = process.env.PORT || 4320;
 
 app.use(bodyParser.json());
 app.use(
