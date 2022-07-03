@@ -1,0 +1,11 @@
+{
+    "name": "patient-app",
+    "version": "0.0.1",
+    "engines": {
+        "node": "16.x"
+    },
+    "scripts": {
+        "postinstall": "npm install --production=true --prefix backend && npm install --production=true --prefix frontend",
+        "build": "npm run build --prefix frontend"
+    }
+}
