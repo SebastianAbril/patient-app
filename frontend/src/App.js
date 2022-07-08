@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import './App.css';
+import { MainTable } from './components/MainTable';
 
 function App() {
   const [patients, setPatients] = useState([]);
@@ -19,13 +20,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
+        <MainTable />
         {patients &&
           patients.map((patient) => {
             return <p key={patient.id}>{JSON.stringify(patient)}</p>;
