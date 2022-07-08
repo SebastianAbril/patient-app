@@ -5,7 +5,10 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "node .",
-    "dev": "nodemon --watch ."
+    "dev": "nodemon --watch .",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +20,10 @@
     "pg": "^8.7.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.18"
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.18",
+    "prettier": "^2.7.1"
   }
 }
