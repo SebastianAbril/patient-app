@@ -1,20 +1,19 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
 
 function App() {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    const loadPatients = async() => {
+    const loadPatients = async () => {
       const patientes = await fetch('/api/patient').then((response) => response.json());
 
       setPatients(patientes);
-    }
+    };
 
     loadPatients();
-  }, [])
+  }, []);
 
   return (
     <div className="App">
@@ -31,13 +30,10 @@ function App() {
         >
           Learn React
         </a>
-        {patients && patients.map((patient) => {
-          return (
-            <p key={patient.id}>
-              {JSON.stringify(patient)}
-            </p>
-          )
-        })}
+        {patients &&
+          patients.map((patient) => {
+            return <p key={patient.id}>{JSON.stringify(patient)}</p>;
+          })}
       </header>
     </div>
   );
