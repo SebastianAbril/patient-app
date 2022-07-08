@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import './App.css';
 
 function App() {
@@ -18,10 +19,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -34,8 +31,18 @@ function App() {
             return <p key={patient.id}>{JSON.stringify(patient)}</p>;
           })}
       </header>
+      <BasicButtons />
     </div>
   );
 }
 
+function BasicButtons() {
+  return (
+    <Stack spacing={2} direction="row">
+      <Button variant="text">Text</Button>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+    </Stack>
+  );
+}
 export default App;
