@@ -1,43 +1,21 @@
-import { useEffect, useState } from 'react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import './App.css';
-import { MainTable } from './components/MainTable';
+import { PatientsScreen } from './screens/PatientsScreen';
+import { Header } from './components/Header';
+import { Routes, Route } from 'react-router-dom';
+import { HomeScreen } from './screens/HomeScreen';
+import { NewPatientScreen } from './screens/NewPatientScreen';
 
 function App() {
-  const [patients, setPatients] = useState([]);
-
-  useEffect(() => {
-    const loadPatients = async () => {
-      const patientes = await fetch('/api/patient').then((response) => response.json());
-
-      setPatients(patientes);
-    };
-
-    loadPatients();
-  }, []);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <MainTable />
-        {patients &&
-          patients.map((patient) => {
-            return <p key={patient.id}>{JSON.stringify(patient)}</p>;
-          })}
-      </header>
-      <BasicButtons />
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/newPatient" element={<NewPatientScreen />} />
+        <Route path="/patientsScreen" element={<PatientsScreen />} />
+      </Routes>
     </div>
   );
 }
 
-function BasicButtons() {
-  return (
-    <Stack spacing={2} direction="row">
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-    </Stack>
-  );
-}
 export default App;
